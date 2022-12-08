@@ -3,7 +3,7 @@ import { Title } from './StatisticTitleStyles';
 export const StatisticTitle = () => {
   return (
     <div>
-      <Title>Statistics</Title>;
+      <Title>Statistics</Title>
     </div>
   );
 };
