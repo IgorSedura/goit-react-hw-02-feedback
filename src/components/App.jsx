@@ -38,27 +38,28 @@ export class App extends Component {
   };
   render() {
     const { good, neutral, bad } = this.state;
+    const { stateIncrementGood, stateIncrementNeutral, stateIncrementBad } =
+      this;
+    const countTotal = this.countTotalFeedback();
+    const coutPositive = this.countPositiveFeedbackPercentage();
+    const countPercenage = this.countPositiveFeedbackPercentage();
     return (
       <div>
         <Feedback
           feedback={this.state}
-          onIncrementGood={this.stateIncrementGood}
-          onIncrementNeutral={this.stateIncrementNeutral}
-          onIncrementBad={this.stateIncrementBad}
+          onIncrementGood={stateIncrementGood}
+          onIncrementNeutral={stateIncrementNeutral}
+          onIncrementBad={stateIncrementBad}
         />
         <GlobalStyle />
         <StatisticTitle />
-        {this.countTotalFeedback() ? (
+        {countTotal ? (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={this.countTotalFeedback()}
-            percentage={
-              !isNaN(this.countPositiveFeedbackPercentage())
-                ? this.countPositiveFeedbackPercentage()
-                : 0
-            }
+            total={countTotal}
+            percentage={!isNaN(coutPositive) ? countPercenage : 0}
           />
         ) : (
           <NoFeedback />
