@@ -1,21 +1,17 @@
 import { Button, Container, ButtonContainer, Title } from './FeedbackStyles';
 
-export const Feedback = ({
-  onIncrementGood,
-  onIncrementNeutral,
-  onIncrementBad,
-}) => {
+export const Feedback = ({ onIncrement }) => {
   return (
     <Container>
       <Title>Please leave feedback</Title>
       <ButtonContainer>
-        <Button type="button" onClick={onIncrementGood}>
+        <Button type="button" onClick={onIncrement}>
           Good
         </Button>
-        <Button type="button" onClick={onIncrementNeutral}>
+        <Button type="button" onClick={onIncrement}>
           Neutral
         </Button>
-        <Button type="button" onClick={onIncrementBad}>
+        <Button type="button" onClick={onIncrement}>
           Bad
         </Button>
       </ButtonContainer>

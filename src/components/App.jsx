@@ -11,20 +11,19 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  stateIncrementGood = () => {
-    this.setState(prevState => {
-      return { good: prevState.good + 1 };
-    });
-  };
-  stateIncrementNeutral = () => {
-    this.setState(prevState => {
-      return { neutral: prevState.neutral + 1 };
-    });
-  };
 
-  stateIncrementBad = () => {
+  stateIncrement = e => {
     this.setState(prevState => {
-      return { bad: prevState.bad + 1 };
+      switch (e.target.innerText) {
+        case 'Good':
+          return { good: prevState.good + 1 };
+        case 'Neutral':
+          return { neutral: prevState.neutral + 1 };
+        case 'Bad':
+          return { bad: prevState.bad + 1 };
+        default:
+          return;
+      }
     });
   };
 
@@ -38,19 +37,13 @@ export class App extends Component {
   };
   render() {
     const { good, neutral, bad } = this.state;
-    const { stateIncrementGood, stateIncrementNeutral, stateIncrementBad } =
-      this;
+    const { stateIncrement } = this;
     const countTotal = this.countTotalFeedback();
     const coutPositive = this.countPositiveFeedbackPercentage();
     const countPercenage = this.countPositiveFeedbackPercentage();
     return (
       <div>
-        <Feedback
-          feedback={this.state}
-          onIncrementGood={stateIncrementGood}
-          onIncrementNeutral={stateIncrementNeutral}
-          onIncrementBad={stateIncrementBad}
-        />
+        <Feedback feedback={this.state} onIncrement={stateIncrement} />
         <GlobalStyle />
         <StatisticTitle />
         {countTotal ? (
