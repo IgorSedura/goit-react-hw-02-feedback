@@ -28,10 +28,10 @@ export class App extends Component {
   // };
 
   stateIncrement = e => {
-    const options = e.target.name;
+    const options = e.target.innerText;
     console.log(options);
     this.setState(prevState => ({
-      [options]: prevState[options] + 1,
+      [options.toLowerCase()]: prevState[options.toLowerCase()] + 1,
     }));
   };
   countTotalFeedback = () => {
